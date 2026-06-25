@@ -7,7 +7,7 @@ from Code.Const import WIN_WIDTH, MENU_OPTION, COLOR_BLACK, COLOR_RED, COLOR_WHI
 class Menu:
     def __init__(self, screen):
         self.screen = screen
-        self.sf = pygame.image.load('./Assets/MenuArtv2.png')
+        self.sf = pygame.image.load('./Assets/MenuArtv2.png').convert_alpha()
         self.rect = self.sf.get_rect(left=0, top=0)
 
     def start(self):
