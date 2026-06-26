@@ -1,9 +1,10 @@
+import random
 import sys
 
 import pygame
 from pygame import Font, Surface, Rect
 
-from Code.Const import COLOR_RED, WIN_HEIGHT
+from Code.Const import COLOR_RED, WIN_HEIGHT, COLOR_WHITE, EVENT_ENEMY, SPAWN_TIME
 from Code.Entity import Entity
 from Code.EntityFactory import EntityFactory
 
@@ -16,6 +17,8 @@ class Level:
         self.name = name
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('stageBg'))
+        self.entity_list.append(EntityFactory.get_entity('ninjaMove1'))
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
 
     def start(self):
         pygame.mixer.music.load('./Assets/stage0track.flac')
@@ -29,15 +32,19 @@ class Level:
             for event in pygame.event.get():
                   if event.type == pygame.QUIT:
                       sys.exit()
-            self.stage_text(14,f'{self.name} Timeout: {self.timeout/ 1000 :.1f}s', COLOR_RED, (10,5))
-            self.stage_text(14,f'fps: {clock.get_fps() :.0f}', COLOR_RED, (10,WIN_HEIGHT - 35))
-            self.stage_text(14,f'entidades: {len(self.entity_list)}',COLOR_RED,(10,WIN_HEIGHT - 20))
+                  if event.type == EVENT_ENEMY:
+                      choice = random.choice(('Enemy1','Enemy2'))
+                      self.entity_list.append(EntityFactory.get_entity(choice))
+
+            self.stage_text(14,f'{self.name} Timeout: {self.timeout/ 1000 :.1f}s', COLOR_WHITE, (10,5))
+            self.stage_text(14,f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10,WIN_HEIGHT - 35))
+            self.stage_text(14,f'Entidades: {len(self.entity_list)}',COLOR_RED,(10,WIN_HEIGHT - 20))
             pygame.display.flip()
     pass
 
 
     def stage_text(self,text_size:int, text:str, text_color:tuple,text_position:tuple ):
-        text_font: Font = pygame.font.SysFont(name="Aerial", size=text_size)
+        text_font: Font = pygame.font.SysFont(name="arial black", size=text_size)
         text_sf: Surface = text_font.render(text, True,text_color).convert_alpha()
         text_rect: Rect = text_sf.get_rect(left=text_position[0], top=text_position[1])
         self.screen.blit(source=text_sf, dest=text_rect)
