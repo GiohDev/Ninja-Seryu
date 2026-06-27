@@ -7,6 +7,8 @@ from pygame import Font, Surface, Rect
 from Code.Const import COLOR_RED, WIN_HEIGHT, COLOR_WHITE, EVENT_ENEMY, SPAWN_TIME
 from Code.Entity import Entity
 from Code.EntityFactory import EntityFactory
+from Code.EntityMediator import EntityMediator
+from Code.Player import Player
 
 
 class Level:
@@ -29,6 +31,9 @@ class Level:
             for ent in self.entity_list:
                   self.screen.blit(source=ent.sf , dest=ent.rect)
                   ent.move()
+
+
+
             for event in pygame.event.get():
                   if event.type == pygame.QUIT:
                       sys.exit()
@@ -40,7 +45,11 @@ class Level:
             self.stage_text(14,f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10,WIN_HEIGHT - 35))
             self.stage_text(14,f'Entidades: {len(self.entity_list)}',COLOR_RED,(10,WIN_HEIGHT - 20))
             pygame.display.flip()
-    pass
+
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
+            pass
+
 
 
     def stage_text(self,text_size:int, text:str, text_color:tuple,text_position:tuple ):

@@ -9,6 +9,21 @@ COLOR_WHITE = (255,255,255)
 EVENT_ENEMY = pygame.USEREVENT + 1
 
 
+ENTITY_HEALTH = {
+      'stageBg0': 999,
+      'stageBg1': 999,
+      'stageBg2': 999,
+      'stageBg3': 999,
+      'stageBg4': 999,
+      'stageBg5': 999,
+      'stageBg6': 999,
+      'ninjaMove1': 5,
+      'Enemy1':4,
+      'Enemy2':3,
+
+}
+
+
 ENTITY_SPEED = {
       'stageBg0': 0,
       'stageBg1': 1,
@@ -18,11 +33,15 @@ ENTITY_SPEED = {
       'stageBg5': 5,
       'stageBg6': 6,
       'ninjaMove1': 4,
-      'Enemy1':3,
-      'Enemy2':5
+      'Enemy1':5,
+      'Enemy2':7,
+
+
 
 
 }
+
+
 
 #S
 

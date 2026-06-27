@@ -4,6 +4,7 @@ from Code.Const import ENTITY_SPEED, WIN_HEIGHT, WIN_WIDTH
 from Code.Entity import Entity
 
 
+
 class Player(Entity):
     def __init__(self,name  , position  ):
         super().__init__(name,position)
@@ -36,6 +37,16 @@ class Player(Entity):
             self.rect.bottom = WIN_HEIGHT - 20
             self.vy = 0
             self.is_jumping = False
+
+
+
+
+
+
+
+
+
+
 
 
 

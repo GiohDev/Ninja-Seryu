@@ -1,4 +1,4 @@
-from Code.Const import WIN_WIDTH, ENTITY_SPEED
+from Code.Const import  ENTITY_SPEED
 from Code.Entity import Entity
 
 
@@ -10,5 +10,3 @@ class Enemy(Entity):
     def move(self):
 
             self.rect.centerx -= ENTITY_SPEED[self.name]
-            if self.rect.right < - 0:
-                self.rect.left = WIN_WIDTH
