@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import pygame.image
 
-from Code.Const import ENTITY_HEALTH
+from Code.Const import ENTITY_HEALTH, ENTITY_HIT
 
 
 class Entity(ABC):
@@ -13,6 +13,9 @@ class Entity(ABC):
         self.rect = self.sf.get_rect(left=position[0], top=position[1])
         self.speed = 0
         self.health = ENTITY_HEALTH[self.name]
+        self.hit = ENTITY_HIT[self.name]
+
+
 
 
     @abstractmethod

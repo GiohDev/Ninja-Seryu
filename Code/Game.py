@@ -18,9 +18,12 @@ class Game:
          menu_return = menu.start()
 
          if menu_return == MENU_OPTION[0]:
-             level = Level(self.screen,'Floresta Nebulosa', menu_return)
+             level = Level(self.screen,'stage1', menu_return)
              level_return = level.start()
-             pass
+             if level_return:
+                 level = Level(self.screen,'stage2', menu_return)
+                 lever_return = level.start()
+
          elif menu_return == MENU_OPTION[2]:
              pygame.quit()
              quit()

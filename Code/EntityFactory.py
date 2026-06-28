@@ -9,18 +9,29 @@ class EntityFactory:
     @staticmethod
     def get_entity(entity_name: str, position=(0,0)):
         match entity_name:
-            case 'stageBg':
+            case 'stage1Bg':
+                list_bg = []
+                for i in range(5):
+                    list_bg.append(Background(f'stage1Bg{i}',(0,0)))
+                    list_bg.append(Background(f'stage1Bg{i}', (WIN_WIDTH, 0)))
+                return list_bg
+            case 'stage2Bg':
                 list_bg = []
                 for i in range(6):
-                    list_bg.append(Background(f'stageBg{i}',(0,0)))
-                    list_bg.append(Background(f'stageBg{i}', (WIN_WIDTH, 0)))
+                    list_bg.append(Background(f'stage2Bg{i}', (0, 0)))
+                    list_bg.append(Background(f'stage2Bg{i}', (WIN_WIDTH, 0)))
                 return list_bg
+
             case 'ninjaMove1':
                 return Player('ninjaMove1', (10, 390))
             case 'Enemy1':
                 return Enemy('Enemy1',(WIN_WIDTH ,380 ))
             case 'Enemy2':
                 return Enemy('Enemy2', (WIN_WIDTH, 380))
+            case 'Enemy3':
+                return Enemy('Enemy3', (WIN_WIDTH, 380))
+            case 'Enemy4':
+                return Enemy('Enemy4', (WIN_WIDTH, 380))
 
 
 

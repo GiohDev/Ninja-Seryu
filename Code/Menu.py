@@ -18,6 +18,10 @@ class Menu:
         while True:
            self.screen.blit(source=self.sf, dest=self.rect)
            self.menu_text(70,"Ninja Seryu",COLOR_RED,((WIN_WIDTH/2),60))
+           self.menu_text(40, "Como Jogar", COLOR_RED, ((WIN_WIDTH / 2), 370))
+           self.menu_text(20, "Pular: espaço     Esquerda : <-     Direita : ->", COLOR_WHITE, ((WIN_WIDTH / 2), 420))
+
+
 
            for i in range(len(MENU_OPTION)):
                if i == menu_option:
